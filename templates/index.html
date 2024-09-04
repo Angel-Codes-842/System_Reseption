@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Recepción</title>
+    <link rel="stylesheet" href="templates/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh; /* Altura completa de la ventana */
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 36px;
+            color: #333;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            width: 100%; /* Asegura que el formulario ocupe el ancho disponible */
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px; /* Espacio entre los botones */
+        }
+
+        input[type="submit"],
+        .button-group a {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        input[type="submit"]:hover,
+        .button-group a:hover {
+            background-color: #4cae4c;
+        }
+
+        .button-group a {
+            background-color: #0275d8; /* Color de fondo para el botón de historial */
+        }
+
+        .button-group a:hover {
+            background-color: #025aa5; /* Color de fondo para el botón de historial al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <h1>ALLNET</h1>
+    <div>
+        <h2>Formulario de Recepción</h2>
+        <form id="recepcionForm" action="{{ url_for('submit') }}" method="POST" onsubmit="handleSubmit(event)">
+            <label for="nombre">Nombre y Apellido:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="tipo">Tipo de Equipo:</label>
+            <input type="text" id="tipo" name="tipo" required>
+
+            <label for="accesorio">Accesorios:</label>
+            <input type="text" id="accesorio" name="accesorio" required>
+
+            <label for="detalles">Condicion o Problema del Equipo:</label>
+            <textarea id="detalles" name="detalles" rows="4" required></textarea>
+
+            <div class="button-group">
+                <input type="submit" value="REGISTRAR">
+                <a href="{{ url_for('historial') }}">Ver Historial</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

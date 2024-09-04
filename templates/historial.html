@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Recepciones</title>
+</head>
+<body>
+    <h1>Historial de Recepciones</h1>
+    <form method="GET" action="{{ url_for('historial') }}">
+        <input type="text" name="query" placeholder="Buscar por nombre o tipo">
+        <button type="submit">Buscar</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Accesorio</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record['id'] }}</td>
+                <td>{{ record['nombre'] }}</td>
+                <td>{{ record['telefono'] }}</td>
+                <td>{{ record['direccion'] }}</td>
+                <td>{{ record['fecha'] }}</td>
+                <td>{{ record['tipo'] }}</td>
+                <td>{{ record['accesorio'] }}</td>
+                <td>{{ record['detalles'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ url_for('index') }}">Volver al Formulario</a>
+</body>
+</html>
